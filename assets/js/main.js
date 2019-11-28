@@ -26,7 +26,23 @@
 				$body.removeClass('is-preload');
 			}, 100);
 		});
-
+	//form submission
+	$("#form-contato").submit(function(e) {
+    e.preventDefault();
+    var form = $(this);    
+    $.ajax({
+           type: form.attr('method'),
+           url: form.attr('action'),
+           data: form.serialize(),
+           success: function (data) {
+			    alert("E-mail enviado com sucesso");                
+            },
+            error: function (data) {
+                console.log('Houve um erro ao efetuar envio.');
+                console.log(data);
+            },
+         });
+	});
 	// Browser fixes.
 
 		// IE: Flexbox min-height bug.
